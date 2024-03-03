@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import com.example.inventory.service.UserDetailsServiceImpl;
 
@@ -42,7 +43,7 @@ public class SecurityConfig {
 				.antMatchers(HttpMethod.GET, "/").permitAll()
 				.antMatchers(HttpMethod.GET, "/assets/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/products").permitAll()
-				.antMatchers(HttpMethod.GET, "/product/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/product/{id}").permitAll()
 				.antMatchers(HttpMethod.GET, "/register").permitAll()
 				.antMatchers(HttpMethod.POST, "/process-register").permitAll()
 				.anyRequest().authenticated()
